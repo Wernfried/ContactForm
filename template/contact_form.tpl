@@ -39,20 +39,20 @@
       <tr>
         <td class="title"><label for="author">{'Your name'|translate}</label></td>
         <td>
-        {if $contact.is_logged}
+        {if isset($contact.is_logged) and $contact.is_logged}
           {$contact.author}
           <input type="hidden" name="author" value="{$contact.author|escape:html}">
         {else}
-          <input type="text" name="author" id="author" size="40" value="{$contact.author|escape:html}">
+          <input type="text" name="author" id="author" size="40" value="{isset($contact.author) and $contact.author|escape:html}">
         {/if}
         </td>
       </tr>
       <tr>
         <td class="title"><label for="email">{'Your e-mail'|translate}</label></td>
         <td>
-        {if $contact.is_logged and !empty($contact.email)}
+        {if isset($contact.is_logged) and $contact.is_logged and !empty($contact.email)}
           {$contact.email}
-          <input type="hidden" name="email" value="{$contact.email|escape:html}">
+          <input type="hidden" name="email" value="{isset($contact.email) and $contact.email|escape:html}">
         {else}
           <input type="text" name="email" id="email" size="40" value="{$contact.email|escape:html}">
         {/if}
@@ -60,11 +60,11 @@
       </tr>
       <tr>
         <td class="title"><label for="subject">{'Subject'|translate}</label></td>
-        <td><input type="text" name="subject" id="subject" style="width:400px;" value="{$contact.subject|escape:html}"></td>
+        <td><input type="text" name="subject" id="subject" style="width:400px;" value="{isset($contact.subject) and $contact.subject|escape:html}"></td>
       </tr>
       <tr>
         <td class="title"><label for="cf_content">{'Message'|translate}</label></td>
-        <td><textarea name="content" id="cf_content" rows="10" style="width:400px;">{$contact.content}</textarea></td>
+        <td><textarea name="content" id="cf_content" rows="10" style="width:400px;">{isset($contact.content) and $contact.content}</textarea></td>
       </tr>
     {if isset($CRYPTO)}
       {$CRYPTO.parsed_content}
